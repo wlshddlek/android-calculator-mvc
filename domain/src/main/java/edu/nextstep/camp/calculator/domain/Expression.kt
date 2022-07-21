@@ -29,13 +29,13 @@ class Expression {
 
     fun delete(): String {
         if (expression.isEmpty()) return expression
-        // 앞의문자가 공백이거나 소수점이면 같이 지워버리기
-        val deleteSize = getDeleteSizeDependingOnExistenceOfSpacesOrDecimal()
+
+        val deleteSize = getDeleteSize()
         expression = expression.substring(0, expression.length - deleteSize)
         return expression
     }
 
-    private fun getDeleteSizeDependingOnExistenceOfSpacesOrDecimal(): Int {
+    private fun getDeleteSize(): Int {
         val hasPrevChar = expression.length > 1
         if (!hasPrevChar) return ONLY_CURRENT
 
